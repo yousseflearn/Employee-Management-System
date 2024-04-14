@@ -7,3 +7,10 @@
   background-color: rgba(1, 32, 93, 0.6);
   color: white;
 }
+
+.nav-link:hover {
+  background-color: orange;
+  width: 100%;
+  color: azure;
+  transition: ease 0.3s;
+}
