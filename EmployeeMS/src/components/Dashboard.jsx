@@ -1,6 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
 const Dashboard = () => {
   return (
     <div className="container-fluid">
@@ -68,7 +67,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow">
+          <div className="p-2 d-flex justify-content-center bg-warning shadow">
             <h4>Employee Management System</h4>
           </div>
           <Outlet />
