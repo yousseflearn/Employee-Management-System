@@ -3,7 +3,7 @@ import con from "../utils/db.js";
 import jwt from "jsonwebtoken";
 const router = express.Router();
 
-router.post("/adminlogin", (req, res) => {
+router.post("/admin_login", (req, res) => {
   const sql = "SELECT * from admin Where email = ? and password = ?";
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
     if (err) return res.json({ loginStatus: false, Error: "Query Error" });

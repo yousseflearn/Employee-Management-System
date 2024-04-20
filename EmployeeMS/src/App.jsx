@@ -8,12 +8,13 @@ import Employee from "./components/Employee.jsx";
 import Category from "./components/Category.jsx";
 import Profile from "./components/Profile.jsx";
 import AddCategory from "./components/AddCategory.jsx";
+import AddEmployee from "./components/AddEmployee.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/adminlogin" element={<Login />}></Route>
+        <Route path="/admin_login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Home />}></Route>
           <Route path="/dashboard/employee" element={<Employee />}></Route>
@@ -22,6 +23,10 @@ function App() {
           <Route
             path="/dashboard/add_category"
             element={<AddCategory />}
+          ></Route>
+          <Route
+            path="/dashboard/add_employee"
+            element={<AddEmployee />}
           ></Route>
         </Route>
       </Routes>
