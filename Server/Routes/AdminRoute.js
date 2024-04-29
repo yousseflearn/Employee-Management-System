@@ -40,7 +40,6 @@ router.post('/add_category', (req, res) => {
     return res.json({ Status: true });
   });
 });
-
 router.post('/add_employee', (req, res) => {
   const sql =
     'INSERT INTO employee (firstName,lastName,email,password,salary,image,phone,address,category_id) VALUES (?)';
@@ -57,7 +56,6 @@ router.post('/add_employee', (req, res) => {
       req.body.address,
       req.body.category_id,
     ];
-
     con.query(sql, [values], (err, result) => {
       if (err) return res.json({ Status: false, Error: 'query Error' });
       return res.json({ Status: true });

@@ -22,6 +22,7 @@ const AddEmployee = () => {
       .then((result) => console.log(result.data))
       .catch((err) => console.log(err));
   };
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/auth/category')
