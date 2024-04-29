@@ -3,6 +3,9 @@ import con from '../utils/db.js';
 import jwt from 'jsonwebtoken';
 const router = express.Router();
 import bcrypt from 'bcryptjs';
+import multer from 'multer';
+import path from 'path';
+
 router.post('/admin_login', (req, res) => {
   const sql = 'SELECT * from admin Where email = ? and password = ?';
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
@@ -33,6 +36,22 @@ router.get('/category', (req, res) => {
   });
 });
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'Public/Images');
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + '_' + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+});
+
 router.post('/add_category', (req, res) => {
   const sql = 'INSERT INTO category (`name`) VALUES (?)';
   con.query(sql, [req.body.category], (err, result) => {
@@ -40,7 +59,7 @@ router.post('/add_category', (req, res) => {
     return res.json({ Status: true });
   });
 });
-router.post('/add_employee', (req, res) => {
+router.post('/add_employee', upload.single('image'), (req, res) => {
   const sql =
     'INSERT INTO employee (firstName,lastName,email,password,salary,image,phone,address,category_id) VALUES (?)';
 
@@ -51,7 +70,7 @@ router.post('/add_employee', (req, res) => {
       req.body.email,
       hash,
       req.body.salary,
-      req.body.image,
+      req.file.filename,
       req.body.phone,
       req.body.address,
       req.body.category_id,

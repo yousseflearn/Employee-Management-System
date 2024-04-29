@@ -17,8 +17,18 @@ const AddEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('firstName', employee.firstName);
+    formData.append('lastName', employee.lastName);
+    formData.append('email', employee.email);
+    formData.append('password', employee.password);
+    formData.append('salary', employee.salary);
+    formData.append('image', employee.image);
+    formData.append('phone', employee.phone);
+    formData.append('address', employee.address);
+    formData.append('category_id', employee.category_id);
     axios
-      .post('http://localhost:3000/auth/add_employee', employee)
+      .post('http://localhost:3000/auth/add_employee', formData)
       .then((result) => console.log(result.data))
       .catch((err) => console.log(err));
   };
@@ -127,7 +137,7 @@ const AddEmployee = () => {
           </label>
           <input
             type="file"
-            name="inputFile"
+            name="image"
             className="form-control"
             id="inputGroupFile"
             onChange={(e) => {
