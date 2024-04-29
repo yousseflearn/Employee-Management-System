@@ -1,7 +1,7 @@
 .loginPage {
-  background-image: url("images/emms3.jpg");
+  background-image: url('images/emms3.jpg');
   background: linear-gradient(rgb(11, 11, 11, 0.5), rgb(10, 10, 10, 0.5)),
-    url("images/emms3.jpg");
+    url('images/emms3.jpg');
 }
 .loginForm {
   background-color: rgba(1, 32, 93, 0.6);
@@ -95,4 +95,64 @@
   text-align: center;
   border-radius: 5px;
   color: orange;
+}
+
+.imageSpan {
+  color: #00dfca;
+  padding: 0 10px;
+  background: #1d2b3a;
+  font-size: 0.65em;
+  border-left: 1px solid #00dfca;
+  border-right: 1px solid #00dfca;
+  letter-spacing: 0.2em;
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  width: 82px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+}
+
+.labelImage {
+  color: #00dfca;
+  transform: translateX(10px) translateY(-7px);
+  padding: 0 10px;
+  background: #1d2b3a;
+  font-size: 0.65em;
+  border-left: 1px solid #00dfca;
+  border-right: 1px solid #00dfca;
+  letter-spacing: 0.2em;
+  position: absolute;
+}
+
+.custom-file-button {
+  input[type='file'] {
+    margin-left: -2px !important;
+    & {
+      color: rgba(0, 223, 202, 0.3);
+      background: transparent;
+      text-align: center;
+    }
+
+    &::-webkit-file-upload-button {
+      display: none;
+    }
+    &::file-selector-button {
+      display: none;
+    }
+  }
+  & {
+    label {
+      background: rgba(0, 223, 202, 0.3);
+      color: #fff;
+      border: 1px solid #00dfca;
+    }
+  }
+
+  &:hover {
+    label {
+      cursor: pointer;
+    }
+  }
 }
