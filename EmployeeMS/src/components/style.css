@@ -91,11 +91,12 @@
 .tableCategory {
   border: 1px solid #00dfca;
   padding: 5px;
-  width: 70%;
+  width: 100%;
   text-align: center;
-  font-size: 1.3em;
   border-radius: 5px;
   color: orange;
+  overflow: auto !important;
+  word-break: break-all;
 }
 
 .imageSpan {

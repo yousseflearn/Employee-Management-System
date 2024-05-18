@@ -1,14 +1,15 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Login from "./components/Login.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard.jsx";
-import Home from "./components/Home.jsx";
-import Employee from "./components/Employee.jsx";
-import Category from "./components/Category.jsx";
-import Profile from "./components/Profile.jsx";
-import AddCategory from "./components/AddCategory.jsx";
-import AddEmployee from "./components/AddEmployee.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Login from './components/Login.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard.jsx';
+import Home from './components/Home.jsx';
+import Employee from './components/Employee.jsx';
+import Category from './components/Category.jsx';
+import Profile from './components/Profile.jsx';
+import AddCategory from './components/AddCategory.jsx';
+import AddEmployee from './components/AddEmployee.jsx';
+import EditEmployee from './components/EditEmployee.jsx';
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
           <Route
             path="/dashboard/add_employee"
             element={<AddEmployee />}
+          ></Route>
+          <Route
+            path="/dashboard/edit_employee/:id"
+            element={<EditEmployee />}
           ></Route>
         </Route>
       </Routes>

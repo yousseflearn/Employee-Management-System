@@ -44,6 +44,34 @@ router.get('/employee', (req, res) => {
   });
 });
 
+router.get('/employee/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = 'SELECT * FROM employee WHERE id = ?';
+  con.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: 'Query Error' });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.put('/edit_employee/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = `UPDATE employee set firstName = ?, lastName = ?, email = ?, salary = ?, phone = ?, address = ?, category_id = ?  WHERE id = ?`;
+  const values = [
+    req.body.firstName,
+    req.body.lastName,
+    req.body.email,
+    req.body.salary,
+    req.body.phone,
+    req.body.address,
+    req.body.category_id,
+  ];
+
+  con.query(sql, [...values, id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: 'Query Error' + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'Public/Images');

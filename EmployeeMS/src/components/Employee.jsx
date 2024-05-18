@@ -23,7 +23,7 @@ const Employee = () => {
       </Link>
       <div className="d-flex flex-column justify-content-center align-items-center gap-3 ">
         <h2 className="text-warning mt-3">Employees List</h2>
-        <table className="table table-dark table-striped table-hover .table-responsive tableCategory table-bordered">
+        <table className="table table-dark table-striped table-hover table-responsive tableCategory table-bordered  ">
           <thead>
             <tr>
               <th>firstName</th>
@@ -55,8 +55,13 @@ const Employee = () => {
                 <td>{e.address}</td>
                 <td>{e.category_id}</td>
                 <td>
-                  <button className="btn btn-info btn-sm me-2">Edit</button>
-                  <button className="btn btn-warning btn-sm">Delete</button>
+                  <Link
+                    to={`/dashboard/edit_employee/` + e.id}
+                    className="btn btn-info btn-sm me-2"
+                  >
+                    Edit
+                  </Link>
+                  <Link className="btn btn-warning btn-sm">Delete</Link>
                 </td>
               </tr>
             ))}
