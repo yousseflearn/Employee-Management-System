@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const Employee = () => {
   const [employee, setEmployee] = useState([]);
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/auth/employee')
@@ -16,6 +17,17 @@ const Employee = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+  const handleDelete = (id) => {
+    axios
+      .delete('http://localhost:3000/auth/delete_employee/' + id)
+      .then((result) => {
+        if (result.data.Status) {
+          window.location.reload();
+        } else {
+          alert(result.data.Error);
+        }
+      });
+  };
   return (
     <div className="container-fluid  px-5 inputCategory">
       <Link className="btn btn-category mt-5" to="/dashboard/add_employee">
@@ -61,7 +73,12 @@ const Employee = () => {
                   >
                     Edit
                   </Link>
-                  <Link className="btn btn-warning btn-sm">Delete</Link>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleDelete(e.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

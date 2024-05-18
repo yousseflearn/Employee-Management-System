@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const EditEmployee = () => {
   const { id } = useParams();
@@ -37,17 +37,24 @@ const EditEmployee = () => {
           salary: result.data.Result[0].salary,
           phone: result.data.Result[0].phone,
           address: result.data.Result[0].address,
+          category_id: result.data.Result[0].category_id,
         });
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const navigate = useNavigate();
 
   const handleUpdate = (e) => {
     e.preventDefault();
     axios
       .put('http://localhost:3000/auth/edit_employee/' + id, employee)
       .then((result) => {
-        console.log(result.data);
+        if (result.data.Status) {
+          navigate('/dashboard/employee');
+        } else {
+          alert(result.data.Error);
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -58,7 +65,7 @@ const EditEmployee = () => {
         className="inputForme  d-flex flex-column justify-content-center align-items-center"
         onSubmit={handleUpdate}
       >
-        <h3 className="mt-4 text-white mb-4">Employee Information</h3>
+        <h3 className="mt-4 text-white mb-4">Edit Employee Information</h3>
         <div className="inputBox  ">
           <input
             type="text"
@@ -157,7 +164,9 @@ const EditEmployee = () => {
           />
           <span>address</span>
         </div>
-        <button className="btn btn-category ">Add Employee</button>
+        <button className="btn btn-category ">
+          Update Employee Information
+        </button>
       </form>
     </div>
   );

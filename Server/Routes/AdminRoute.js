@@ -72,6 +72,15 @@ router.put('/edit_employee/:id', (req, res) => {
   });
 });
 
+router.delete('/delete_employee/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = 'delete from employee WHERE id = ?';
+  con.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: 'Query Error' + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'Public/Images');
