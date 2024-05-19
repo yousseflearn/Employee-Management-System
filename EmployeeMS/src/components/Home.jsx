@@ -94,7 +94,7 @@ const Home = () => {
               <tr className="flex-fill" key={index}>
                 <td>{a.email}</td>
                 <td>
-                  <butt className="btn btn-info btn-sm me-2">Edit</butt>
+                  <button className="btn btn-info btn-sm me-2">Edit</button>
                   <button className="btn btn-warning btn-sm">Delete</button>
                 </td>
               </tr>

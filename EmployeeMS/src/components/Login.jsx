@@ -1,11 +1,11 @@
-import "./style.css";
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import './style.css';
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [error, setError] = useState();
   const navigate = useNavigate();
@@ -14,10 +14,10 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/auth/admin_login", values)
+      .post('http://localhost:3000/auth/admin_login', values)
       .then((result) => {
         if (result.data.loginStatus) {
-          navigate("/dashboard");
+          navigate('/dashboard/');
         } else {
           setError(result.data.Error);
         }

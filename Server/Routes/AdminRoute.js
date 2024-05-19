@@ -53,6 +53,11 @@ router.get('/employee/:id', (req, res) => {
   });
 });
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('token');
+  return res.json({ Status: true });
+});
+
 router.get('/admin_count', (req, res) => {
   const sql = 'SELECT count(id) as admin FROM admin';
   con.query(sql, (err, result) => {
