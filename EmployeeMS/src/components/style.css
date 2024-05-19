@@ -98,6 +98,16 @@
   overflow: auto !important;
   word-break: break-all;
 }
+.tableCategory1 {
+  border: 1px solid #00dfca;
+  padding: 5px;
+  width: 95.5%;
+  text-align: center;
+  border-radius: 5px;
+  color: orange;
+  overflow: auto !important;
+  word-break: break-all;
+}
 
 .imageSpan {
   color: #00dfca;

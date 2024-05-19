@@ -1,5 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link, Outlet } from 'react-router-dom';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 const Dashboard = () => {
   return (
     <div className="container-fluid">
@@ -20,7 +20,7 @@ const Dashboard = () => {
             >
               <li className="w-100 m-auto">
                 <Link
-                  to="/"
+                  to="/dashboard/home"
                   data-bs-toggle="collapse"
                   className="nav-link text-white px-0 align-middle text-red-hover"
                 >
