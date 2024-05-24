@@ -18,8 +18,8 @@ router.post('/employee_login', (req, res) => {
         if (response) {
           const email = result[0].email;
           const token = jwt.sign(
-            { role: 'employee', email: email },
-            'employee_secret_key',
+            { role: 'employee', email: email, id: result[0].id },
+            'jwt_secret_key',
             { expiresIn: '1d' }
           );
           res.cookie('token', token);
@@ -33,5 +33,19 @@ router.post('/employee_login', (req, res) => {
       });
     }
   });
+});
+
+router.get('/detail/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = 'SELECT * FROM employee WHERE id = ?';
+  con.query(sql, [id], (err, result) => {
+    if (err) res.json({ Status: false });
+    return res.json(result);
+  });
+});
+
+router.get('/logout', (req, res) => {
+  res.clearCookie('token');
+  return res.json({ Status: true });
 });
 export { router as employeeRouter };

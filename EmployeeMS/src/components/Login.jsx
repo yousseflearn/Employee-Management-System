@@ -17,7 +17,7 @@ const Login = () => {
       .post('http://localhost:3000/auth/admin_login', values)
       .then((result) => {
         if (result.data.loginStatus) {
-          navigate('/dashboard/');
+          navigate('/dashboard/home');
         } else {
           setError(result.data.Error);
         }
