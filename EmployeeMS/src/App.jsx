@@ -13,6 +13,7 @@ import EditEmployee from './components/EditEmployee.jsx';
 import Start from './components/Start.jsx';
 import EmployeeLogin from './components/EmployeeLogin.jsx';
 import EmployeeDetail from './components/EmployeeDetail.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 function App() {
   return (
@@ -21,8 +22,22 @@ function App() {
         <Route path="/" element={<Start />}></Route>
         <Route path="/admin_login" element={<Login />}></Route>
         <Route path="/employee_login" element={<EmployeeLogin />}></Route>
-        <Route path="/employee_detail/:id" element={<EmployeeDetail />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/employee_detail/:id"
+          element={
+            <PrivateRoute>
+              <EmployeeDetail />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
           <Route path="/dashboard/home" element={<Home />}></Route>
           <Route path="/dashboard/employee" element={<Employee />}></Route>
           <Route path="/dashboard/category" element={<Category />}></Route>

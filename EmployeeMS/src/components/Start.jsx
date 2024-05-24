@@ -11,7 +11,7 @@ const Start = () => {
       .then((result) => {
         if (result.data.Status) {
           if (result.data.role === 'admin') {
-            navigate('/dashboard');
+            navigate('/dashboard/home');
           } else {
             navigate('/employee_detail/' + result.data.id);
           }

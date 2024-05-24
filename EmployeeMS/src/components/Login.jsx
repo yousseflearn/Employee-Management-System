@@ -17,6 +17,7 @@ const Login = () => {
       .post('http://localhost:3000/auth/admin_login', values)
       .then((result) => {
         if (result.data.loginStatus) {
+          localStorage.setItem('valid', true);
           navigate('/dashboard/home');
         } else {
           setError(result.data.Error);

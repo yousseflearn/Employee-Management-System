@@ -5,6 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const EmployeeDetail = () => {
   const [employee, setEmployee] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/employee/detail/' + id)
@@ -14,12 +16,12 @@ const EmployeeDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const navigate = useNavigate();
   const handleLogout = () => {
     axios
       .get('http://localhost:3000/employee/logout')
       .then((result) => {
         if (result.data.Status) {
+          localStorage.removeItem('valid');
           navigate('/');
         }
       })
@@ -34,7 +36,6 @@ const EmployeeDetail = () => {
       <div className="d-flex justify-content-center flex-column align-items-center mt-3">
         <img
           src={`http://localhost:3000/Images/` + employee.image}
-          alt=""
           className="emp_det_image mt-3"
         />
         <div className="d-flex align-items-center flex-column mt-3  gap-3">

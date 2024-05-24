@@ -1,8 +1,9 @@
 import express, { query } from 'express';
 import con from '../utils/db.js';
 import jwt from 'jsonwebtoken';
-const router = express.Router();
 import bcrypt from 'bcryptjs';
+
+const router = express.Router();
 
 router.post('/employee_login', (req, res) => {
   const sql = 'SELECT * from employee Where email = ? ';
@@ -48,4 +49,5 @@ router.get('/logout', (req, res) => {
   res.clearCookie('token');
   return res.json({ Status: true });
 });
+
 export { router as employeeRouter };
